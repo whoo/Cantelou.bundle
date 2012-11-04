@@ -30,13 +30,15 @@ def MainMenu():
 	item=0
 	for item in data.xpath('//item'):
 		title	= item.xpath('title')[0].text
-		pudDate	= item.xpath('pubdate')[0].text
-		summary = str(item.xpath('summary')[0].text)
-		Log(summary)
-		summary='blank'
+		pubDate	= item.xpath('pubdate')[0].text
+		summary = ''.join(item.xpath('./summary/text()'))
+		#Log(summary)
 		url = item.xpath('enclosure')[0].get('url')
-		dir.Append(TrackItem(url,title.strip(),"info","Rubrique",summary=title.strip(),art=R(ICON)))
+		dir.Append(TrackItem(url,title.strip(),"info","Rubrique",summary=summary+pubDate,art=R(ICON)))
 	return dir
 
 
 ###################################################################################################
+def utf8decode(s):
+	s = s.encode("iso-8859-1")
+	return s.decode("utf-8")
