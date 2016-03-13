@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import re
 PLUGIN_PREFIX = "/music/Cantelou"
 PLUGIN_ID = "com.plexapp.plugins.Cantelou"
 PLUGIN_REVISION = 0.2
@@ -46,7 +45,6 @@ def MainMenu():
         pubDate = item.xpath('pubDate')[0].text
         url = item.xpath('enclosure')[0].get('url')
         title = item.xpath('title')[0].text.strip()
-        image = "http://cdn-europe1.new2.ladmedia.fr/var/europe1/storage/images/media/podcasts/la-revue-de-presque-de-nicolas-canteloup/511584-4-fre-FR/La-revue-de-presque-de-Nicolas-Canteloup.jpg"
         summary = "[%s]\n\n%s\n%s\n" % (title, summary.strip(), pubDate)
         title = title.strip()
         dir.Append(
